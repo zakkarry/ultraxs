@@ -21,9 +21,17 @@ and run the script to install or update your instance of cross-seed.
 
 ## How do I use this?
 
-```bash
-bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/master/install_ultra_xs.sh)
-```
+This is a quote from ultra.cc on [their Discord](https://discord.com/channels/427913240316477443/427914848702038026/1320729360700932190)
+
+> You can now install the latest version of cross-seed by:
+>
+> -   Installing the latest version of [Node](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-nodejs): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Node-Installer/main.sh)`
+>
+> -   Install the latest or v3.10 of [Python](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-python-using-pyenv): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Python-Installer/main.sh)`
+>
+> Then, with thanks to the dev from cross-seed, Zakary, who has created a custom script:
+>
+> -   Install cross seed with `bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/master/install_ultra_xs.sh)`
 
 ## How do I update?
 
