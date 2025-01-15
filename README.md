@@ -1,4 +1,4 @@
-# Ultra.cc cross-seed installation script
+# cross-seed build/install from source script
 
 <div align="center">
 
@@ -16,12 +16,12 @@ Please do. https://tip.ary.dev for my buymeacoffee.
 
 ## What is it?
 
-This is ultraxs (ultra.cc cross-seed installation script) - you simply set `chmod +x install_ultra_xs.sh`
+This is ultraxs (ultra.cc cross-seed installation script) based script - you simply set `chmod +x install_xs.sh`
 and run the script to install or update your instance of cross-seed.
 
 ## How do I use this?
 
-This is a quote from ultra.cc on [their Discord](https://discord.com/channels/427913240316477443/427914848702038026/1320729360700932190)
+This is a quote from ultra.cc on [their Discord](https://discord.com/channels/427913240316477443/427914848702038026/1320729360700932190) - you should be able to do the same for this branch/version of the script...their scripts they offer just install standard nvm and pyenv at a user-mode level.
 
 > You can now install the latest version of cross-seed by:
 >
@@ -31,7 +31,7 @@ This is a quote from ultra.cc on [their Discord](https://discord.com/channels/42
 >
 > Then, with thanks to the dev from cross-seed, Zakary, who has created a custom script:
 >
-> -   Install cross seed with `bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/master/install_ultra_xs.sh)`
+> -   Install cross seed with `bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/latest/install_xs.sh)`
 
 ## How do I update?
 

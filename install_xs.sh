@@ -1,7 +1,7 @@
 #!/bin/bash
 #
 # This cross-seed install script is written by zakkarry (https://github.com/zakkarry)
-# a cross-seed dev working to bring cross-seed to ultra.cc
+# a cross-seed dev working to bring cross-seed everywhere he can
 #
 # If you find any problems or would like to make any suggestions, you can make a
 # GitHub issue on the repository for this script at https://github.com/zakkarry/ultraxs
@@ -9,8 +9,8 @@
 #
 
 # Define the directory to check
-CS_ULTRA_DIR="$HOME/.cs-ultra"
-PACKAGE_JSON="$CS_ULTRA_DIR/package.json"
+CS_SRC_DIR="$HOME/.cross-seed-dist"
+PACKAGE_JSON="$CS_SRC_DIR/package.json"
 
 # Function to parse the version from package.json
 get_local_version() {
@@ -29,7 +29,7 @@ get_latest_version() {
 
 # Function to set up alias for cross-seed daemon
 setup_alias() {
-  ALIAS_CMD="alias cross-seed=\"NODE_OPTIONS=--disable-wasm-trap-handler NODE_VERSION=22 node $CS_ULTRA_DIR/dist/cmd.js\""
+  ALIAS_CMD="alias cross-seed=\"NODE_OPTIONS=--disable-wasm-trap-handler NODE_VERSION=22 node $CS_SRC_DIR/dist/cmd.js\""
   if ! grep -Fxq "$ALIAS_CMD" "$HOME/.bashrc"; then
     echo "$ALIAS_CMD" >>"$HOME/.bashrc"
     echo "Alias 'cross-seed' added. Please restart your shell or run 'source ~/.bashrc' before attempting to start cross-seed."
@@ -40,9 +40,9 @@ setup_alias() {
 }
 
 # Main logic
-if [ -d "$CS_ULTRA_DIR" ]; then
+if [ -d "$CS_SRC_DIR" ]; then
   echo
-  echo "Detected previous ultra.cc installation of cross-seed."
+  echo "Detected previous installation of cross-seed."
   echo
   local_version=$(get_local_version)
   echo "Local version: $local_version"
@@ -64,10 +64,10 @@ if [ -d "$CS_ULTRA_DIR" ]; then
       if [ "$reinstall_choice" == "y" ]; then
         echo "Reinstalling..."
         echo
-        rm -rf "$CS_ULTRA_DIR"
-        git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
-        cd "$CS_ULTRA_DIR" || exit
-        git checkout ultra
+        rm -rf "$CS_SRC_DIR"
+        git clone https://github.com/cross-seed/cross-seed.git "$CS_SRC_DIR"
+        cd "$CS_SRC_DIR" || exit
+        git checkout master
         npm install .
         echo
         echo "Transpiling cross-seed..."
@@ -84,10 +84,10 @@ if [ -d "$CS_ULTRA_DIR" ]; then
       if [ "$update_choice" == "y" ]; then
         echo "Updating to version $latest_version..."
         echo
-        rm -rf "$CS_ULTRA_DIR"
-        git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
-        cd "$CS_ULTRA_DIR" || exit
-        git checkout ultra
+        rm -rf "$CS_SRC_DIR"
+        git clone https://github.com/cross-seed/cross-seed.git "$CS_SRC_DIR"
+        cd "$CS_SRC_DIR" || exit
+        git checkout master
         npm install .
         echo
         echo "Transpiling cross-seed..."
@@ -106,15 +106,15 @@ if [ -d "$CS_ULTRA_DIR" ]; then
     exit 0
   fi
 else
-  echo "Directory $CS_ULTRA_DIR does not exist."
+  echo "Directory $CS_SRC_DIR does not exist."
   # shellcheck disable=SC2162
   read -p "Do you want to install? (y/n): " install_choice
   echo
   if [ "$install_choice" == "y" ]; then
     echo "Installing..."
-    git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
-    cd "$CS_ULTRA_DIR" || exit
-    git checkout ultra
+    git clone https://github.com/cross-seed/cross-seed.git "$CS_SRC_DIR"
+    cd "$CS_SRC_DIR" || exit
+    git checkout master
     npm install .
     echo
     echo "Transpiling cross-seed..."
