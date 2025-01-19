@@ -15,7 +15,8 @@ PACKAGE_JSON="$CS_ULTRA_DIR/package.json"
 # Function to parse the version from package.json
 get_local_version() {
   if [ -f "$PACKAGE_JSON" ]; then
-    sed -n '3s/.*"\([^"]\+\)".*/\1/p' "$PACKAGE_JSON"
+    sed -n '3s/.*"\([^"]\+\)".*/v\1/p' "$PACKAGE_JSON"
+  #  sed -n '3s/.*"\([^"]\+\)".*/\1/p' "$PACKAGE_JSON"
   else
     echo "N/A"
   fi
