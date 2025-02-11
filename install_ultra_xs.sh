@@ -11,6 +11,7 @@
 # Define the directory to check
 CS_ULTRA_DIR="$HOME/.cs-ultra"
 PACKAGE_JSON="$CS_ULTRA_DIR/package.json"
+INSTALL_BRANCH="master"
 
 # Function to parse the version from package.json
 get_local_version() {
@@ -22,6 +23,20 @@ get_local_version() {
   fi
 }
 
+get_debian_version() {
+  VERSION_ID=$(grep -oP '(?<=^VERSION_ID=)"?\K[0-9]+' /etc/os-release)
+  if [[ "$VERSION_ID" == "10" ]]; then
+      INSTALL_BRANCH="ultra"
+  elif [[ "$VERSION_ID" -gt 10 ]]; then
+      INSTALL_BRANCH="master"
+  else
+      print "Unsupported OS version detected. Contact Support. Exiting."
+      exit 1
+  fi
+  echo
+  echo "Detected Debian version successfully. Switching to branch: $INSTALL_BRANCH"
+
+}
 # Function to get the latest version from GitHub
 get_latest_version() {
   curl -s https://api.github.com/repos/cross-seed/cross-seed/releases/latest |
@@ -39,7 +54,7 @@ setup_alias() {
   fi
   echo
 }
-
+get_debian_version
 # Main logic
 if [ -d "$CS_ULTRA_DIR" ]; then
   echo
@@ -53,8 +68,8 @@ if [ -d "$CS_ULTRA_DIR" ]; then
 
   if [ "$choice" == "y" ]; then
     latest_version=$(get_latest_version)
+    
 
-    echo
     echo "Latest version: $latest_version"
     echo
     if [ "$local_version" == "N/A" ]; then
@@ -68,7 +83,7 @@ if [ -d "$CS_ULTRA_DIR" ]; then
         rm -rf "$CS_ULTRA_DIR"
         git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
         cd "$CS_ULTRA_DIR" || exit
-        git checkout ultra
+        git checkout $INSTALL_BRANCH
         npm install .
         echo
         echo "Transpiling cross-seed..."
@@ -88,7 +103,7 @@ if [ -d "$CS_ULTRA_DIR" ]; then
         rm -rf "$CS_ULTRA_DIR"
         git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
         cd "$CS_ULTRA_DIR" || exit
-        git checkout ultra
+        git checkout $INSTALL_BRANCH
         npm install .
         echo
         echo "Transpiling cross-seed..."
@@ -115,7 +130,7 @@ else
     echo "Installing..."
     git clone https://github.com/cross-seed/cross-seed.git "$CS_ULTRA_DIR"
     cd "$CS_ULTRA_DIR" || exit
-    git checkout ultra
+    git checkout $INSTALL_BRANCH
     npm install .
     echo
     echo "Transpiling cross-seed..."
