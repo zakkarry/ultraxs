@@ -10,6 +10,17 @@
 
 </div>
 
+## I'm on a updated debian server, do I still need to use this script to update/install?
+
+### NEW ANNOUNCEMENT
+
+Yes, this script streamlines the procedure and requirements for cross-seedd into one command. There are unique aspects to
+the ultra seedbox environment that are handled automatically.
+
+The script has been updated to account for the updated OS servers and the old style, and will handle both appropriately.
+
+Simply run this script as you always have, and it will take care of the rest.
+
 ## This is awesome, can I donate/tip you for this?
 
 Please do. https://tip.ary.dev for my buymeacoffee.
@@ -27,13 +38,13 @@ This is a quote from ultra.cc on [their Discord](https://discord.com/channels/42
 
 > You can now install the latest version of cross-seed by:
 >
-> -   Installing the latest version of [Node **LTS (22.x)**](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-nodejs): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Node-Installer/main.sh)`
+> - Installing the latest version of [Node **LTS (22.x)**](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-nodejs): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Node-Installer/main.sh)`
 >
-> -   Install **v3.10 or above** version of [Python](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-python-using-pyenv): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Python-Installer/main.sh)`
+> - Install **v3.10 or above** version of [Python](https://docs.ultra.cc/books/unofficial-language-installers-3AK/page/install-python-using-pyenv): `bash <(wget -qO- https://scripts.ultra.cc/util-v2/LanguageInstaller/Python-Installer/main.sh)`
 >
 > Then, with thanks to the dev from cross-seed, Zakary, who has created a custom script:
 >
-> -   Install cross seed with `bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/master/install_ultra_xs.sh)`
+> - Install cross seed with `bash <(wget -qO- https://raw.githubusercontent.com/zakkarry/ultraxs/refs/heads/master/install_ultra_xs.sh)`
 
 ### Notes on required versions
 
